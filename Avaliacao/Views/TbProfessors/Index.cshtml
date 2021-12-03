@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Avaliacao.Models.TbProfessor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<form>
+    <div class="row">
+        <div class="col-md-6">
+            <label class="text-left">Buscar</label>
+            <input class="form-control" type="text" name="BuscaPorNome"/>
+            <input class="btn btn-primary" type="submit" value="Buscar"/>
+        </div>
+    </div>
+</form>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_professor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nome_professor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email_professor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.senha_professor)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.id_professor)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.nome_professor)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.email_professor)
+    </td>
+    <td>
+        @Html.HiddenFor(modelItem => item.senha_professor)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.id_professor }) |
+        @Html.ActionLink("Details", "Details", new { id = item.id_professor }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.id_professor })
+    </td>
+</tr>
+}
+
+</table>
